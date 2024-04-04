@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {prisma} from "@/db";
+import TodoItem from "@/components/TodoItem";
 
 function getTodos() {
     return prisma.todo.findMany();
@@ -17,7 +18,7 @@ export default async function Home() {
                       className={`border border-emerald-300 rounded px-2 py-1 hover:bg-emerald-700 focus-within:bg-emerald-700 outline-none`}>Add</Link>
             </header>
             <ul className={`pl-4`}>
-                {todos.map(todo => <li key={todo.id}>{todo.title}</li>)}
+                {todos.map(todo => <TodoItem key={todo.id} {...todo}></TodoItem>)}
             </ul>
         </>
     );
