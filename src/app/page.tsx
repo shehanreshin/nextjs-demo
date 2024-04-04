@@ -6,6 +6,11 @@ function getTodos() {
     return prisma.todo.findMany();
 }
 
+async function toggleTodo(id: string, complete: boolean) {
+    "use server"
+    await prisma.todo.update({where: {id}, data: {complete}});
+}
+
 export default async function Page() {
     // await prisma.todo.create({data: {title: "Create a todo app", complete: false}});
     const todos = await getTodos();
@@ -18,7 +23,7 @@ export default async function Page() {
                       className={`border border-emerald-300 rounded px-2 py-1 hover:bg-emerald-700 focus-within:bg-emerald-700 outline-none`}>Add</Link>
             </header>
             <ul className={`pl-4`}>
-                {todos.map(todo => <TodoItem key={todo.id} {...todo}></TodoItem>)}
+                {todos.map(todo => <TodoItem key={todo.id} {...todo} toggleTodo={toggleTodo}/>)}
             </ul>
         </>
     );
