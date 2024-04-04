@@ -21,6 +21,7 @@
 *.pem
 dev.db*
 .idea
+.env
 
 # debug
 npm-debug.log*
