@@ -6,7 +6,7 @@ function getTodos() {
     return prisma.todo.findMany();
 }
 
-export default async function Home() {
+export default async function Page() {
     // await prisma.todo.create({data: {title: "Create a todo app", complete: false}});
     const todos = await getTodos();
 

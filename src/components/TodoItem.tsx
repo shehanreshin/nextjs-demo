@@ -4,7 +4,7 @@ type Props = {
     complete: boolean;
 }
 
-export default function TodoItem({id, title, complete}: Props) {
+export default function TodoItem({id, title, complete}: Readonly<Props>) {
     return (
         <li className={`flex items-center gap-1`}>
             <input id={id} type="checkbox" className={`peer cursor-pointer`}/>
